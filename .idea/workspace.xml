@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27eccd07-d377-4539-905e-0036bd2b9e56" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scss/common/_general.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scss/common/_mixins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scss/common/_typography.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scss/common/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scss/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/iceland.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="SCSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -96,6 +95,7 @@
       <workItem from="1678185889240" duration="76000" />
       <workItem from="1678186035169" duration="1327000" />
       <workItem from="1678211844482" duration="492000" />
+      <workItem from="1678212505802" duration="339000" />
     </task>
     <servers />
   </component>
