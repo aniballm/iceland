@@ -71,7 +71,7 @@ $main-class: '.menu';
       height: ((1366 - 841) / 1366) * 100vh;
     }
 
-    @media (min-width: $bp-tablet) {
+    @media (min-width: $bp-desktop) {
       height: ((980 - 665) / 980) * 100vh;
     }
   }
