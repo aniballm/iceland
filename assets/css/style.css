@@ -21,29 +21,22 @@ body {
   box-sizing: border-box;
 }
 
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  z-index: 100;
-}
 .header-logo {
-  margin-top: 4.0712468193vw;
-  margin-left: 5.5979643766vw;
+  position: fixed;
+  top: 4.0712468193vw;
+  left: 5.5979643766vw;
+  z-index: 100;
 }
 @media (min-width: 768px) {
   .header-logo {
-    margin-top: 2.63671875vw;
-    margin-left: 3.515625vw;
+    top: 2.63671875vw;
+    left: 3.515625vw;
   }
 }
 @media (min-width: 1200px) {
   .header-logo {
-    margin-top: 1.875vw;
-    margin-left: 2.5vw;
+    top: 1.875vw;
+    left: 2.5vw;
   }
 }
 .header-logo img {
@@ -58,6 +51,12 @@ body {
   .header-logo img {
     width: 8.0555555556vw;
   }
+}
+.header-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
 }
 .header-menu #navicon {
   width: 7.1246819338vw;

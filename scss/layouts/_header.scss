@@ -2,32 +2,20 @@ $main-class: '.header';
 
 #{$main-class} {
 
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  z-index: 100;
-
   &-logo {
-    margin: {
-      top: vw_mobile(16);
-      left: vw_mobile(22);
-    };
+    position: fixed;
+    top: vw_mobile(16);
+    left: vw_mobile(22);
+    z-index: 100;
     
     @media (min-width: $bp-tablet) {
-      margin: {
-        top: vw_tablet(27);
-        left: vw_tablet(36);
-      };
+      top: vw_tablet(27);
+      left: vw_tablet(36);
     }
 
     @media (min-width: $bp-desktop) {
-      margin: {
-        top: vw_desktop(27);
-        left: vw_desktop(36);
-      };
+      top: vw_desktop(27);
+      left: vw_desktop(36);
     }
 
     img {
@@ -44,6 +32,10 @@ $main-class: '.header';
   }
 
   &-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
 
     #navicon {
       width: vw_mobile(28);
