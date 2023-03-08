@@ -1,0 +1,16 @@
+html {
+  height: 100%;
+}
+
+body {
+  max-height: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+
+  @media (max-width: 767px) {
+    background: url(../img/plane.jpeg) center bottom no-repeat {
+      size: cover;
+    };
+  }
+}

@@ -1,0 +1,15 @@
+// Funciones para ajustar tamaños de los elementos
+@function vw_desktop($size) {
+  $vw: ($size / 1440) * 100vw;
+  @return $vw;
+}
+
+@function vw_tablet($size) {
+  $vw: ($size / 1024) * 100vw;
+  @return $vw;
+}
+
+@function vw_mobile($size) {
+  $vw: ($size / 393) * 100vw;
+  @return $vw;
+}
