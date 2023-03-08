@@ -1,0 +1,28 @@
+$main-class: '.title';
+
+#{$main-class} {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  &-text {
+    font-size: vw_mobile(76);
+    font-weight: 700;
+    text-transform: uppercase;
+
+    @media (min-width: $bp-tablet) {
+      font-size: vw_tablet(180);
+    }
+
+    @media (min-width: $bp-tablet) {
+      font-size: vw_desktop(160);
+    }
+  }
+}

@@ -1,0 +1,248 @@
+$main-class: '.menu';
+
+#{$main-class} {
+
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+
+  &-left {
+    width: vw_mobile(159);
+
+    @media (min-width: $bp-tablet) {
+      width: vw_tablet(503);
+    }
+
+    @media (min-width: $bp-tablet) {
+      width: vw_desktop(738);
+    }
+  }
+
+  &-right {
+    position: relative;
+    width: vw_mobile(393 - 159);
+
+    @media (min-width: $bp-tablet) {
+      width: vw_tablet(1024 - 503);
+    }
+
+    @media (min-width: $bp-tablet) {
+      width: vw_tablet(1440 - 738);
+    }
+  }
+
+  &-image {
+    width: 100%;
+    height: (523 / 852) * 100vh;
+    
+    @media (min-width: $bp-tablet) {
+      height: (841 / 1366) * 100vh;
+    }
+
+    @media (min-width: $bp-desktop) {
+      height: (665 / 980) * 100vh;
+    }
+
+    &__container {
+      width: 100%;
+      height: 100%;
+      background: url(../img/bird.jpeg) center bottom no-repeat #fff;
+      background-size: cover;
+      
+      @media (min-width: $bp-tablet) {
+        background-image: url(../img/lake.jpeg);
+      }
+
+      @media (min-width: $bp-desktop) {
+        background-image: url(../img/road.jpeg);
+      }
+    }
+  }
+
+  &-bottom {
+    display: flex;
+    height: ((852 - 523) / 852) * 100vh;
+
+    @media (min-width: $bp-tablet) {
+      height: ((1366 - 841) / 1366) * 100vh;
+    }
+
+    @media (min-width: $bp-tablet) {
+      height: ((980 - 665) / 980) * 100vh;
+    }
+  }
+
+  &-social {
+    height: 100%;
+    width: 100%;
+    
+    @media (min-width: $bp-tablet) {
+      width: (190 / 503) * 100%;
+    }
+
+    @media (min-width: $bp-tablet) {
+      width: (234 / 734) * 100%;
+    }
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: $color-yellow;
+      row-gap: vw_mobile(28);
+
+      @media (min-width: $bp-tablet) {
+        background-color: $color-black;
+        row-gap: vw_tablet(27);
+      }
+
+      @media (min-width: $bp-tablet) {
+        row-gap: vw_desktop(27);
+      }
+    }
+
+    img {
+      width: vw_mobile(48);
+      height: vw_mobile(48);
+      
+      @media (min-width: $bp-tablet) {
+        width: vw_tablet(40);
+        height: vw_tablet(40);
+      }
+
+      @media (min-width: $bp-tablet) {
+        width: vw_desktop(40);
+        height: vw_desktop(40);
+      }
+    }
+  }
+
+  &-quote {
+    display: none;
+
+    @media (min-width: $bp-tablet) {
+      display: block;
+      width: ((734 - 234) / 503) * 100%;
+    }
+
+    &__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background: $color-yellow;
+      color: $color-white;
+    }
+
+    &__text {
+      width: (241 / (503 - 190)) * 100%;
+      text-align: center;
+      font-size: vw_tablet(18);
+      font-weight: 700;
+      line-height: (26 / 18);
+
+      @media (min-width: $bp-desktop) {
+        width: (315 / (734 - 234)) * 100%;
+        font-size: vw_desktop(18);
+      }
+    }
+  }
+
+  &-languages {
+    display: none;
+    position: absolute;
+    top: vw_tablet(25);
+    left: vw_tablet(16);
+    font-style: italic;
+    color: $color-yellow;
+    font-weight: 600;
+    font-size: vw_tablet(14);
+    line-height: (17 / 14);
+
+    @media (min-width: $bp-tablet) {
+      display: block;
+    }
+
+    @media (min-width: $bp-tablet) {
+      top: vw_desktop(25);
+      left: vw_desktop(18);
+      font-size: vw_desktop(14);
+    }
+
+    a {
+      color: $color-yellow;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &-menu {
+    height: 100vh;
+
+    &__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: $color-black;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        padding-left: 0;
+        margin-left: 0;
+        row-gap: (65.33 / 852) * 100vh;
+
+        @media (min-width: $bp-tablet) {
+          row-gap: (48 / 1366) * 100vh;
+        }
+
+        @media (min-width: $bp-tablet) {
+          row-gap: (48 / 980) * 100vh;
+        }
+      }
+
+      li {
+        text-align: center;
+
+        a {
+          text-decoration: none;
+          font-size: vw_mobile(36);
+          text-shadow: 0px 0px 1px $color-yellow;
+          color: $color-black;
+          font-weight: 800;
+          line-height: (44 / 36);
+          letter-spacing: .04em;
+          transition: .2s ease-in-out;
+          
+          @media (min-width: $bp-tablet) {
+            font-size: vw_tablet(70);
+            line-height: (85 / 70);
+            text-shadow: 0px 0px 1.2px $color-yellow;
+          }
+
+          @media (min-width: $bp-desktop) {
+            font-size: vw_desktop(70);
+          }
+
+          &:hover {
+            color: $color-yellow !important;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+$main-class: '.video';
+
+#{$main-class} {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: vw_tablet(449);
+  overflow: hidden;
+  
+  @media (max-width: $bp-tablet - 1) {
+    display: none;
+  }
+  
+  @media (min-width: $bp-desktop) {
+    width: vw_desktop(595);
+  }
+
+  video {
+    height: 100%;
+    transform: translateX(-35%);
+
+    @media (min-width: $bp-desktop) {
+      transform: translateX(-25%);
+    }
+  }
+}
