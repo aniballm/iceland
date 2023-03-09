@@ -318,12 +318,15 @@ $main-class: '.menu';
 
       &-languages {
         opacity: 0;
-        display: block;
         animation-name: appear;
         animation-duration: .25s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
         animation-delay: .5s;
+
+        @media (min-width: $bp-tablet) {
+          display: block;
+        }
       }
 
       .bg-menu {

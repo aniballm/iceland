@@ -590,12 +590,16 @@ body {
 }
 .menu.open .menu-languages {
   opacity: 0;
-  display: block;
   animation-name: appear;
   animation-duration: 0.25s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-delay: 0.5s;
+}
+@media (min-width: 768px) {
+  .menu.open .menu-languages {
+    display: block;
+  }
 }
 .menu.open .menu .bg-menu {
   animation-name: slideFromBottom;
