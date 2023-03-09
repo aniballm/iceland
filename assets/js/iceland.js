@@ -26,7 +26,7 @@ const logoAnimation = new MagnetMouse({
     magnet: {
         element: '.header-logo',
         enabled: true,
-        distance: 10,
+        distance: 7,
         position: 'center'
     }
 })
@@ -36,7 +36,7 @@ const menuAnimation = new MagnetMouse({
     magnet: {
         element: '.header-menu',
         enabled: true,
-        distance: 10,
+        distance: 7,
         position: 'center'
     }
 })
