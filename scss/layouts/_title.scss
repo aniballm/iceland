@@ -16,6 +16,8 @@ $main-class: '.title';
     font-size: vw_mobile(76);
     font-weight: 700;
     text-transform: uppercase;
+    cursor: default;
+    transition: transform .1s ease;
 
     @media (min-width: $bp-tablet) {
       font-size: vw_tablet(180);

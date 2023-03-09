@@ -21,11 +21,86 @@ body {
   box-sizing: border-box;
 }
 
+@keyframes slideFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes slideFromBottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+@keyframes slideFromBottomLeft {
+  from {
+    transform: translate(-100%, 100%);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes hideToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes hideToBottom {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes hideToBottomLeft {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-100%, 100%);
+  }
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes appearFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 .header-logo {
   position: fixed;
   top: 4.0712468193vw;
   left: 5.5979643766vw;
   z-index: 100;
+  transition: transform 0.1s ease;
 }
 @media (min-width: 768px) {
   .header-logo {
@@ -54,16 +129,27 @@ body {
 }
 .header-menu {
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 5.5979643766vw;
+  right: 5.5979643766vw;
   z-index: 100;
+  transition: transform 0.1s ease;
+}
+@media (min-width: 768px) {
+  .header-menu {
+    top: 3.3203125vw;
+    right: 2.1484375vw;
+  }
+}
+@media (min-width: 1200px) {
+  .header-menu {
+    top: 2.3611111111vw;
+    right: 2.5vw;
+  }
 }
 .header-menu #navicon {
   width: 7.1246819338vw;
   height: 5.5979643766vw;
   position: relative;
-  margin-top: 5.5979643766vw;
-  margin-right: 5.5979643766vw;
   transform: rotate(0deg);
   transition: 0.5s ease-in-out;
   cursor: pointer;
@@ -72,16 +158,12 @@ body {
   .header-menu #navicon {
     width: 2.734375vw;
     height: 2.1484375vw;
-    margin-top: 3.3203125vw;
-    margin-right: 2.1484375vw;
   }
 }
 @media (min-width: 1200px) {
   .header-menu #navicon {
     width: 1.9444444444vw;
     height: 1.5277777778vw;
-    margin-top: 2.3611111111vw;
-    margin-right: 2.5vw;
   }
 }
 .header-menu #navicon span {
@@ -169,6 +251,8 @@ body {
   font-size: 19.3384223919vw;
   font-weight: 700;
   text-transform: uppercase;
+  cursor: default;
+  transition: transform 0.1s ease;
 }
 @media (min-width: 768px) {
   .title-text {
@@ -211,15 +295,19 @@ body {
 
 .menu {
   position: absolute;
-  display: flex;
+  display: none;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 10;
 }
+.menu div {
+  overflow: hidden;
+}
 .menu-left {
   width: 40.4580152672vw;
+  overflow: hidden;
 }
 @media (min-width: 768px) {
   .menu-left {
@@ -234,6 +322,7 @@ body {
 .menu-right {
   position: relative;
   width: 59.5419847328vw;
+  overflow: hidden;
 }
 @media (min-width: 768px) {
   .menu-right {
@@ -381,6 +470,7 @@ body {
   font-weight: 600;
   font-size: 1.3671875vw;
   line-height: 1.2142857143;
+  z-index: 10;
 }
 @media (min-width: 768px) {
   .menu-languages {
@@ -406,19 +496,28 @@ body {
 }
 .menu-menu__container {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+}
+.menu-menu__container .bg-menu {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   background-color: #000;
+  z-index: 0;
 }
 .menu-menu__container ul {
+  position: relative;
   display: flex;
   flex-direction: column;
   list-style: none;
   padding-left: 0;
   margin-left: 0;
   row-gap: 7.6678403756vh;
+  z-index: 1;
 }
 @media (min-width: 768px) {
   .menu-menu__container ul {
@@ -430,10 +529,11 @@ body {
     row-gap: 4.8979591837vh;
   }
 }
-.menu-menu__container li {
+.menu-menu__container .menu-item {
   text-align: center;
+  overflow: hidden;
 }
-.menu-menu__container li a {
+.menu-menu__container .menu-item .menu-link {
   text-decoration: none;
   font-size: 9.1603053435vw;
   text-shadow: 0px 0px 1px #FFA800;
@@ -441,20 +541,194 @@ body {
   font-weight: 800;
   line-height: 1.2222222222;
   letter-spacing: 0.04em;
-  transition: 0.2s ease-in-out;
 }
 @media (min-width: 768px) {
-  .menu-menu__container li a {
+  .menu-menu__container .menu-item .menu-link {
     font-size: 6.8359375vw;
     line-height: 1.2142857143;
     text-shadow: 0px 0px 1.2px #FFA800;
   }
 }
 @media (min-width: 1200px) {
-  .menu-menu__container li a {
+  .menu-menu__container .menu-item .menu-link {
     font-size: 4.8611111111vw;
   }
 }
-.menu-menu__container li a:hover {
+.menu-menu__container .menu-item .menu-link:hover {
   color: #FFA800 !important;
+}
+.menu.open {
+  display: flex;
+}
+.menu.open .menu-image__container {
+  animation-name: slideFromBottomLeft;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+.menu.open .menu-social__container {
+  animation-name: slideFromRight;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+.menu.open .menu-social img {
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.menu.open .menu-social a:first-child img {
+  animation-delay: 0.5s;
+}
+.menu.open .menu-social a:last-child img {
+  animation-delay: 0.75s;
+}
+.menu.open .menu-quote {
+  animation-name: appear;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+.menu.open .menu-languages {
+  opacity: 0;
+  display: block;
+  animation-name: appear;
+  animation-duration: 0.25s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
+}
+.menu.open .menu .bg-menu {
+  animation-name: slideFromBottom;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.menu.open .menu-menu__container .bg-menu {
+  animation-name: slideFromBottom;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+.menu.open .menu-menu__container .menu-item {
+  transform: translateY(100%);
+  animation-name: slideFromBottom;
+  animation-duration: 0.125s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.menu.open .menu-menu__container .menu-link {
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 0.125s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.menu.open .menu-menu__container .menu-item:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.menu.open .menu-menu__container .menu-item:nth-child(1) .menu-link {
+  animation-delay: 0.5s;
+}
+.menu.open .menu-menu__container .menu-item:nth-child(2) {
+  animation-delay: 0.625s;
+}
+.menu.open .menu-menu__container .menu-item:nth-child(2) .menu-link {
+  animation-delay: 0.625s;
+}
+.menu.open .menu-menu__container .menu-item:nth-child(3) {
+  animation-delay: 0.75s;
+}
+.menu.open .menu-menu__container .menu-item:nth-child(3) .menu-link {
+  animation-delay: 0.75s;
+}
+.menu.open .menu-menu__container .menu-item:nth-child(4) {
+  animation-delay: 0.875s;
+}
+.menu.open .menu-menu__container .menu-item:nth-child(4) .menu-link {
+  animation-delay: 0.875s;
+}
+.menu.open .menu-menu__container .menu-item:nth-child(5) {
+  animation-delay: 1s;
+}
+.menu.open .menu-menu__container .menu-item:nth-child(5) .menu-link {
+  animation-delay: 1s;
+}
+.menu.close {
+  display: flex;
+}
+.menu.close .menu-image__container {
+  animation-name: hideToBottomLeft;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.menu.close .menu-social__container {
+  animation-name: hideToRight;
+  animation-duration: 0.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+.menu.close .menu-social img {
+  animation-name: disappear;
+  animation-duration: 0.25s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.menu.close .menu-social a:first-child img {
+  animation-delay: 0.25s;
+}
+.menu.close .menu-quote {
+  animation-name: disappear;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.menu.close .menu-languages {
+  animation-name: disappear;
+  animation-duration: 0.25s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.menu.close .menu-menu__container .bg-menu {
+  animation-name: hideToBottom;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
+}
+.menu.close .menu-menu__container .menu-item {
+  animation-name: hideToBottom;
+  animation-duration: 0.125s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.menu.close .menu-menu__container .menu-link {
+  animation-name: disappear;
+  animation-duration: 0.125s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.menu.close .menu-menu__container .menu-item:nth-child(4) {
+  animation-delay: 0.125s;
+}
+.menu.close .menu-menu__container .menu-item:nth-child(4) .menu-link {
+  animation-delay: 0.125s;
+}
+.menu.close .menu-menu__container .menu-item:nth-child(3) {
+  animation-delay: 0.25s;
+}
+.menu.close .menu-menu__container .menu-item:nth-child(3) .menu-link {
+  animation-delay: 0.25s;
+}
+.menu.close .menu-menu__container .menu-item:nth-child(2) {
+  animation-delay: 0.375s;
+}
+.menu.close .menu-menu__container .menu-item:nth-child(2) .menu-link {
+  animation-delay: 0.375s;
+}
+.menu.close .menu-menu__container .menu-item:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.menu.close .menu-menu__container .menu-item:nth-child(1) .menu-link {
+  animation-delay: 0.5s;
 }

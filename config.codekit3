@@ -151,6 +151,28 @@
       "sC" : 3,
       "tS" : 0
     },
+    "\/assets\/js\/magnet-mouse-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/assets\/js\/magnet-mouse-min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/assets\/js\/magnet-mouse.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/assets\/js\/magnet-mouse-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
     "\/assets\/video\/geiser.mp4" : {
       "cB" : 0,
       "ft" : 8192,
@@ -218,6 +240,20 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/scss\/assets\/css\/_variables.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
+    "\/scss\/components\/_animations.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/scss\/assets\/css\/_animations.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,

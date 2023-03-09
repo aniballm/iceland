@@ -3,15 +3,20 @@ $main-class: '.menu';
 #{$main-class} {
 
   position: absolute;
-  display: flex;
+  display: none;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 10;
 
+  div {
+    overflow: hidden;
+  }
+
   &-left {
     width: vw_mobile(159);
+    overflow: hidden;
 
     @media (min-width: $bp-tablet) {
       width: vw_tablet(503);
@@ -25,6 +30,7 @@ $main-class: '.menu';
   &-right {
     position: relative;
     width: vw_mobile(393 - 159);
+    overflow: hidden;
 
     @media (min-width: $bp-tablet) {
       width: vw_tablet(1024 - 503);
@@ -111,6 +117,7 @@ $main-class: '.menu';
     img {
       width: vw_mobile(48);
       height: vw_mobile(48);
+      //opacity: 0;
       
       @media (min-width: $bp-tablet) {
         width: vw_tablet(40);
@@ -166,6 +173,7 @@ $main-class: '.menu';
     font-weight: 600;
     font-size: vw_tablet(14);
     line-height: (17 / 14);
+    z-index: 10;
 
     @media (min-width: $bp-tablet) {
       display: block;
@@ -192,19 +200,30 @@ $main-class: '.menu';
 
     &__container {
       display: flex;
+      position: relative;
       justify-content: center;
       align-items: center;
       width: 100%;
       height: 100%;
-      background-color: $color-black;
+      //background-color: $color-black;
+
+      .bg-menu {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: $color-black;
+        z-index: 0;
+      }
 
       ul {
+        position: relative;
         display: flex;
         flex-direction: column;
         list-style: none;
         padding-left: 0;
         margin-left: 0;
         row-gap: (65.33 / 852) * 100vh;
+        z-index: 1;
 
         @media (min-width: $bp-tablet) {
           row-gap: (48 / 1366) * 100vh;
@@ -215,10 +234,11 @@ $main-class: '.menu';
         }
       }
 
-      li {
+      .menu-item {
         text-align: center;
+        overflow: hidden;
 
-        a {
+        .menu-link {
           text-decoration: none;
           font-size: vw_mobile(36);
           text-shadow: 0px 0px 1px $color-yellow;
@@ -226,8 +246,7 @@ $main-class: '.menu';
           font-weight: 800;
           line-height: (44 / 36);
           letter-spacing: .04em;
-          transition: .2s ease-in-out;
-          
+
           @media (min-width: $bp-tablet) {
             font-size: vw_tablet(70);
             line-height: (85 / 70);
@@ -240,6 +259,232 @@ $main-class: '.menu';
 
           &:hover {
             color: $color-yellow !important;
+          }
+        }
+      }
+
+
+    }
+  }
+
+  &.open {
+    display: flex;
+
+    #{$main-class} {
+
+      &-image {
+        &__container {
+          animation-name: slideFromBottomLeft;
+          animation-duration: 1s;
+          animation-iteration-count: 1;
+        }
+      }
+
+      &-social {
+        &__container {
+          animation-name: slideFromRight;
+          animation-duration: .5s;
+          animation-iteration-count: 1;
+        }
+
+        img {
+          opacity: 0;
+          animation-name: appear;
+          animation-duration: .5s;
+          animation-iteration-count: 1;
+          animation-fill-mode: forwards;
+        }
+
+        a {
+          &:first-child {
+            img {
+              animation-delay: .5s;
+            }
+          }
+
+          &:last-child {
+            img {
+              animation-delay: .75s;
+            }
+          }
+        }
+      }
+
+      &-quote {
+        animation-name: appear;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+      }
+
+      &-languages {
+        opacity: 0;
+        display: block;
+        animation-name: appear;
+        animation-duration: .25s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        animation-delay: .5s;
+      }
+
+      .bg-menu {
+        animation-name: slideFromBottom;
+        animation-duration: .5s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
+
+      &-menu {
+        &__container {
+          .bg-menu {
+            animation-name: slideFromBottom;
+            animation-duration: .5s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+          }
+
+          .menu-item {
+            transform: translateY(100%);
+
+            animation-name: slideFromBottom;
+            animation-duration: .125s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+          }
+
+          .menu-link {
+            opacity: 0;
+            animation-name: appear;
+            animation-duration: .125s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+          }
+
+          .menu-item {
+            @for $i from 1 through 5 {
+              &:nth-child(#{$i}) {
+                animation-delay: .5s + (($i - 1) * .125s);
+
+                .menu-link {
+                  animation-delay: .5s + (($i - 1) * .125s);
+                }
+              }
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+
+  &.close {
+    display: flex;
+
+    #{$main-class} {
+
+      &-image {
+        &__container {
+          animation-name: hideToBottomLeft;
+          animation-duration: 1s;
+          animation-iteration-count: 1;
+          animation-fill-mode: forwards;
+        }
+      }
+
+      &-social {
+        &__container {
+          animation-name: hideToRight;
+          animation-duration: .5s;
+          animation-delay: .5s;
+          animation-fill-mode: forwards;
+        }
+
+        img {
+          animation-name: disappear;
+          animation-duration: .25s;
+          animation-iteration-count: 1;
+          animation-fill-mode: forwards;
+        }
+
+        a {
+          &:first-child {
+            img {
+              animation-delay: .25s;
+            }
+          }
+        }
+      }
+
+      &-quote {
+        animation-name: disappear;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
+
+      &-languages {
+        animation-name: disappear;
+        animation-duration: .25s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
+
+      &-menu {
+        &__container {
+          .bg-menu {
+            animation-name: hideToBottom;
+            animation-duration: .5s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            animation-delay: .5s;
+          }
+
+          .menu-item {
+            animation-name: hideToBottom;
+            animation-duration: .125s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+          }
+
+          .menu-link {
+            animation-name: disappear;
+            animation-duration: .125s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+          }
+
+          .menu-item {
+            &:nth-child(4) {
+              animation-delay: .125s;
+
+              .menu-link {
+                animation-delay: .125s;
+              }
+            }
+
+            &:nth-child(3) {
+              animation-delay: .25s;
+
+              .menu-link {
+                animation-delay: .25s;
+              }
+            }
+
+            &:nth-child(2) {
+              animation-delay: .375s;
+
+              .menu-link {
+                animation-delay: .375s;
+              }
+            }
+
+            &:nth-child(1) {
+              animation-delay: .5s;
+
+              .menu-link {
+                animation-delay: .5s;
+              }
+            }
           }
         }
       }
