@@ -541,6 +541,7 @@ body {
   font-weight: 800;
   line-height: 1.2222222222;
   letter-spacing: 0.04em;
+  transition: color 0.2s ease-in-out;
 }
 @media (min-width: 768px) {
   .menu-menu__container .menu-item .menu-link {

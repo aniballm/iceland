@@ -246,6 +246,7 @@ $main-class: '.menu';
           font-weight: 800;
           line-height: (44 / 36);
           letter-spacing: .04em;
+          transition: color .2s ease-in-out;
 
           @media (min-width: $bp-tablet) {
             font-size: vw_tablet(70);
